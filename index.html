@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #test{
+        text-align: center;
+        font-size: 60px;
+        margin-top: 0px;
+       }
+    </style>
+</head>
+<body>
+    <div id="test"></div>
+    <script>
+        let countDownDate = new Date('Feb 20, 2022 9:03:30').getTime();
+
+        const count = setInterval(function(){
+
+            const now = new Date().getTime();
+
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance/(1000 * 60 * 60 * 24));
+
+            const hours = Math.floor(distance%(1000 * 60 * 60 * 24)/(1000*60*60));
+
+            const minutes = Math.floor(distance%(1000 * 60 * 60)/(1000*60));
+
+            const seconds = Math.floor(distance%(1000*60)/1000);
+
+            document.getElementById('test').innerHTML = `${days} d ${hours} h ${minutes} m ${seconds} s`;
+
+            if(distance<0){
+                clearInterval(count);
+                document.getElementById('test').innerHTML = "TIME UP";
+            }
+
+        },1000);
+    </script>
+</body>
+</html>
